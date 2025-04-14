@@ -10,7 +10,7 @@ const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config(); // Correct dotenv usage
 const app = express();
 const staticRoutes = require("./routes/static");
-const inventoryRoutes = require("./routes/inventoryRoute"); // Add inventory route import
+const inventoryRoutes = require("./routes/inventoryRoutes"); // Add inventory route import
 
 app.set("view engine", "ejs");
 app.use(expressLayouts);
