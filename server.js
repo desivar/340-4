@@ -12,6 +12,9 @@ const app = express();
 const staticRoutes = require("./routes/static");
 const inventoryRoutes = require("./routes/inventoryRoutes"); // Add inventory route import
 
+const session = require("express-session")
+const pool = require('./database/')
+
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // not at views root
