@@ -1,1001 +1,808 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+
+:root {
+    /* color palette for webpage */
+    --primary-color: #65a5b5;
+    --secondary-color: #133a7c;
+    --tertiary-color: #4f6067;
+    --accent-color: #93efea;
+    --accent-color2: #f4acb7;
+    --light-grey: #dacece;
+    --medium-grey: #9daa95;
+    --dark-grey: #554f50;
+    --background: #ffffff;
+
+
+    --success: #5cb85c;
+    --success-mute: #c3e6cb;
+    --danger: #d9534f;
+    --danger-mute: #eca9a7;
+    --danger-dark: #c9302c;
+    --warning: #f0ad4e;
+    --warning-mute: #fcf8e3;
+    --primary: #0275d8;
+    --primary-mute: #d9edf7;
+
+    /* font styles for webpage */
+    --font-heading: 'Oswald', sans-serif;
+    --font-paragraph: 'Merriweather', serif;
+
+    /* sizes */
+    --font-base: 20px;
+    --small-font: 0.8em;
+    --large-font: 1.2em;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-paragraph);
+    font-size: var(--font-base);
+    color: var(--tertiary-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--background);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+@media (min-width: 768px) {
+    body {
+        background-image: url('/images/site/small_check.jpg');
+    }
+}
+/******* Headings ***************/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-style: normal;
+}
+h1 {
+    font-size: 2.5em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.75em;
+}
+h4 {
+    font-size: 1.5em;
+}
+
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-/* Reset and Base Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/******* Wrapper ***************/
 
-html {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-body {
-  color: #333;
-  background-color: white;
-}
-
-/* Wrapper and Container Styles */
 #wrapper {
-  max-width: 100%;
-  margin: 0 auto;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    background-color: var(--background);
 }
 
-/* Main content container with blue border */
-.main-container {
-  margin: 0 auto;
-  padding: 0.5rem;
-  border: 2px solid #00c3ff;
-  background-color: white;
+@media (min-width: 768px) {
+    #wrapper {
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 5px solid var(--accent-color);
+        margin: 2em 5em;
+    }
 }
 
-/* Header Styles */
+/******* Header ***************/
 #top-header {
-  padding: 1.5rem 0;
-  background-color: var(--background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    overflow: hidden;
+    padding: 20px 30px;
+    font-family: var(--font-heading);
 }
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
 .siteName a {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-  text-decoration: none;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
 }
-
-#tools {
-  margin-left: auto;
+.siteName a:hover {
+    color: var(--secondary-color);
 }
-
 #tools a {
-  text-decoration: none;
-  color: #000;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 0 10px;
 }
-
 #tools a:hover {
-  background-color: #f0f0f0;
+    color: var(--tertiary-color);
 }
 
-/* Navigation Styles */
+/******* Navigation ***************/
 nav {
-  background-color: #24253c;
-}
-nav.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+    font-family: var(--font-heading);
+    background-color: var(--tertiary-color);
+    color: white;
+    padding: 10px 0;
+    width: 100%;
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  gap: 0.5rem;
-  max-width: 1200px;
-  padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem;
-  transition: opacity 0.3s;
+nav li a {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-nav a:hover {
-  text-decoration: underline;
+nav li a:hover {
+    color: var(--accent-color);
+    cursor: pointer;
 }
 
-/* Main Content */
-main {
-  padding: 1rem;
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
-
-/* Delorean Showcase */
-#delorean-showcase {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 2rem;
-  background-color: white;
-}
-
-.delorean-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.delorean-details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.delorean-details h2 {
-  color: #00c3ff;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.delorean-features {
-  list-style: none;
-  margin-bottom: 1rem;
-}
-
-.delorean-features li {
-  color: #00c3ff;
-  margin-bottom: 0.25rem;
-}
-
-#own-today {
-  background-color: #00c3ff;
-  color: #000;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/* Content Container - Mobile First */
-.content-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Reviews Section */
-#delorean-reviews {
-  order: 1;
-}
-
-#delorean-reviews ul {
-  list-style: disc;
-  padding-left: 1.0rem;
-}
-
-#delorean-reviews li {
-  margin-bottom: 0.5rem;
-}
-
-/* Upgrades Section */
-#delorean-upgrades {
-  order: 2;
-}
-
-.upgrades-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-.upgrade-item {
-  text-align: center;
-}
-
-.upgrade-img-container {
-  background-color: #00c3ff;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.upgrade-img-container img {
-  max-width: 100%;
-  max-height: 100px;
-  object-fit: contain;
-}
-
-.upgrade-item a {
-  color: blue;
-  text-decoration: none;
-}
-
-.upgrade-item a:hover {
-  text-decoration: underline;
-}
-
-/* Footer */
+/******* Footer ***************/
 footer {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-
-.copyright {
-  font-size: 0.8rem;
-}
-
-/* Desktop Styles */
-@media screen and (min-width: 768px) {
-  #wrapper {
-    margin: 50px 100px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid blue;
-    border-bottom: 10px solid blue;
-    background: #ffffff;
-    border-image: repeating-linear-gradient(to bottom, #00c3ff 0, #00c3ff 20px, #00c3ff 20px, #00c3ff 40px) 1;
-  }
-}
-@media (min-width: 768px) {
-  .upgrades-grid { grid-template-columns: repeat(2, 1fr); }
-  #delorean-showcase { flex-direction: row; }
-  body {
-    background-image: url('/images/site/small_check.jpg');
-  }
-  .main-container {
-    max-width: 900px;
-    margin: 1rem auto;
-  }
-  .siteName a {
-    font-size: 2rem;
-  }
-  nav ul {
-    padding: 0.8rem 1rem;
-  }
-  nav li {
-    margin: 0 1rem 0 0;
-  }
-  .delorean-details h2 {
-    font-size: 1.5rem;
-  }
-  .content-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  #delorean-reviews {
-    order: 2;
     display: flex;
     flex-direction: column;
-  }
-  #delorean-upgrades {
-    order: 1;
-  }
+    justify-content: start;
+    padding: 10px;
+    width: 100%;
+}
+.copyright {
+    color: var(--tertiary-color);
+    font-size: 0.8em;
+}
+footer a {
+    color: var(--primary-color);
+    font-size: 0.8em;
+}
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+/******* Main Content ***************/
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.page-container {
+    background-color: var(--background);
+    padding: 20px;
+}
+
+/******* Hero Container Content ***************/
+
+.hero-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto;
+}
+
+.hero-container h1 {
+    grid-column: 1/13;
+    grid-row: 1;
+    margin-bottom: 10px;
+}
+
+.hero-container picture {
+    grid-column: 4/11;
+    grid-row: 2;
+    flex-shrink: 0;
+}
+
+.hero-container picture img {
+    width: 100%;
+    height: auto;
 }
 
 /* Media Query for Larger Screens */
 @media (min-width: 1024px) {
-  .hero-container picture img {
+    .hero-container picture img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Styling for the article content over the image */
+.hero-container article {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/6;
+    grid-row: 2;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.hero-container article h2 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin: 0 0 10px;
+}
+
+.hero-container article ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1em;
+    font-weight: 600;
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 1024px) {
+    .hero-container article {
+        grid-column: 2/6;
+    }
+    .hero-container article h2 {
+        font-size: 2em;
+    }
+    .hero-container article ul {
+        font-size: 1.2em;
+    }
+}
+
+.hero-container article ul li {
+    margin-bottom: 5px;
+}
+.hero-container article .img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-container article img {
+    width: 140px;
+    height: auto;
+    cursor: pointer;
+}
+
+/******* Info Container Content ***************/
+/* Grid Areas */
+.upgrades {
+    grid-area: upgrades;
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    gap: 20px;
+    justify-content: center;
+}
+
+.reviews {
+    grid-area: reviews;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Info Container */
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'reviews'
+        'upgrades';
+    column-gap: 10px;
+}
+
+.info-container h2 {
+    text-align: center;
+    margin: 5px 0;
+}
+
+/* Media Query for Larger Screens */
+@media (min-width: 1024px) {
+    .info-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'upgrades reviews';
+    }
+}
+
+/* Reviews Styles */
+.reviews ul {
+    line-height: 2;
+    font-weight: 600;
+    margin: 0 auto;
+}
+
+/* Upgrades Styles */
+.upgrades h2 {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.upgrades-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upgrades-item .box {
+    display: flex;
+    background-color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    height: 120px;
+}
+
+.upgrades-item .box img {
+    width: 60px;
+    height: auto;
+}
+
+.upgrades-item a {
+    color: var(--primary-color);
+    font-size: 0.8em;
+}
+
+/******* Error Page Stylings ***************/
+#error-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+#error-page img {
     width: 100%;
     height: auto;
-  }
+    object-fit: cover;
 }
 
-/* ===== Classification View Styles ===== */
-.inventory-classification {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: #ffffff;
+/* Media query for larger screens (1024px and up) */
+@media (min-width: 1024px) {
+    #error-page {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.inventory-classification h1 {
-  font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #00c3ff;
-  border-bottom: 2px solid #00c3ff;
-  padding-bottom: 0.5rem;
-}
-
-#inv-display {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-#inv-display li {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#inv-display li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-#inv-display li a {
-  text-decoration: none;
-  color: inherit;
-}
-
-#inv-display li img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.namePrice {
-  padding: 0.75rem 1rem;
-  text-align: center;
-  background-color: #fff;
-}
-
-.namePrice h2 {
-  font-size: 1.3rem;
-  margin: 0.5rem 0;
-  color: #333;
-}
-
-.namePrice span {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #000;
-}
-
-.notice {
-  font-size: 1.2rem;
-  color: #b00;
-  margin-top: 2rem;
-}
-
-/* ===== Vehicle Detail View Professional Styles ===== */
-
-/* Container for the entire detail view */
-.vehicle-detail-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* Car title at the top */
-.vehicle-title {
-  font-size: 2.8rem;
-  color: #000;
-  text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 3px solid #000;
-  padding-bottom: 0.5rem;
-}
-
-/* Row container for image and details */
-.vehicle-detail-row {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* For larger screens: display image and details side-by-side */
-@media screen and (min-width: 768px) {
-  .vehicle-detail-row {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .vehicle-image, .vehicle-info {
-    flex: 1;
-  }
-  .vehicle-image {
-    margin-right: 2rem;
-  }
-}
-
-/* Vehicle image styling */
-.vehicle-image {
-  text-align: center;
-}
-.vehicle-image img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Vehicle info styling */
-.vehicle-info {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #333;
-}
-.vehicle-info p {
-  margin: 0.8rem 0;
-}
-.vehicle-info p strong {
-  color: #000;
-  font-weight: bold;
-}
-
-/* ===== Error Page Styles ===== */
-.error-container {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 2rem;
-  text-align: center;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-/* 404 Error */
-.error-404 h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #d9534f;
-}
-.error-404 p {
-  font-size: 1.5rem;
-  color: #555;
-}
-
-/* 505 Error */
-.error-505 h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #d9534f;
-}
-.error-505 p {
-  font-size: 1.5rem;
-  color: #555;
-}
-
-/* ===== Flash Messages Styling ===== */
-
-/* Style for the unordered list returned by messages() */
-ul.messages {
-  list-style: none;
-  padding: 0.8rem 1rem;
-  margin: 1rem auto;
-  max-width: 900px;
-  border: 1px solid #00c3ff; /* Accent border */
-  background-color: #e7f3ff; /* Light blue background */
-  color: #0077cc; /* Dark blue text */
-  border-radius: 5px;
-  font-size: 1.2rem;
-}
-
-/* Style for each individual message item */
-ul.messages li {
-  margin: 0.5rem 0;
-}
-
-/* ===== Unified Form Styles ===== */
-.login-container, .registration-container {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #2f3e4d;  /* Dark background */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  color: #fff;
-}
-
-.login-form, .registration-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Form labels */
-.login-form label, .registration-form label {
-  display: block;
-  text-align: left;
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-}
-
-/* Form inputs */
-.login-form input, .registration-form input {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: box-shadow 0.3s ease;
-}
-
-.login-form input:focus, .registration-form input:focus {
-  box-shadow: 0 0 5px rgba(0, 123, 204, 0.8);
-}
-
-/* Password toggle styling */
-.show-password-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  margin: 0.5rem 0;
-}
-
-.show-password-container input[type="checkbox"] {
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-/* Submit buttons */
-.login-form button, .registration-form button[type="submit"] {
-  padding: 0.75rem;
-  background-color: #fff;
-  color: #2f3e4d;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-form button:hover, .registration-form button[type="submit"]:hover {
-  background-color: #f0f0f0;
-}
-
-/* Link styling */
-.register-link, .login-link {
-  margin-top: 1rem;
-  font-size: 1rem;
-  text-align: center;
-}
-
-.register-link a, .login-link a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.register-link a:hover, .login-link a:hover {
-  color: #ccc;
-}
-
-/* Error messages */
-.flash-error {
-  background: #ffdddd;
-  color: #d8000c;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-/* Validation Styles password */
-input:invalid {
-  border-color: #ff4444;
-  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
-}
-
-input:valid {
-  border-color: #00C851;
-  box-shadow: 0 0 5px rgba(0, 200, 81, 0.3);
-}
-
-.password-requirements {
-  margin: 0.5rem 0;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* ===== Inventory Management and Form Styles ===== */
-.management-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.management-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-.management-links .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #00c3ff;
-  color: #000000;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.management-links .btn:hover {
-  background-color: #0099cc;
-}
-
-/* Form Container (Add Classification and Add Inventory) */
-.form-container {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #00c3ff; /* Blue background */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Instructional Text Above Form */
-.form-instructions {
-  text-align: center;
-  color: #000000; /* Red */
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-/* Form Styling */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.form-group label {
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 0.2rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #000;
-  border-radius: 4px;
-  background-color: #fff;
-  font-size: 1rem;
-  color: #000;
-}
-
-.form-group textarea {
-  min-height: 80px;
-  resize: vertical;
-}
-
-.form-group select {
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 1rem;
-  padding-right: 1.5rem;
-}
-
-.form-group small {
-  font-size: 0.9rem;
-  color: #000;
-  margin-top: 0.2rem;
-}
-
-/* Button Styling */
-form button {
-  padding: 0.75rem 1.5rem;
-  background-color: #00c3ff; /* Matches form background */
-  color: #000;
-  border: 1px solid #000;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  align-self: center;
-  transition: background-color 0.3s ease;
-}
-
-form button:hover {
-  background-color: #0099cc;
-}
-
-/* Error Messages */
-.errors {
-  text-align: center;
-  color: #ff0000; /* Red */
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.errors ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  .form-container {
-    margin: 1rem;
-    padding: 1rem;
-  }
-  .management-container {
-    margin: 1rem;
-    padding: 1rem;
-  }
-  .management-links {
+.error-message {
+    display: flex;
     flex-direction: column;
+}
+
+/********** Login Form Stylings ************/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
+    gap: 20px;
 }
 
-/* Validation Styles (Reusing Existing) */
-.form-group input:invalid,
-.form-group textarea:invalid,
-.form-group select:invalid {
-  border-color: #ff4444;
-  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+.login-container,
+.registration-container,
+.management-container,
+.add-class-container,
+.edit-class-container,
+.review-container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--primary-color);
+    color: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.management {
+    gap: 5px;
+}
+.edit-class-container h4 {
+    text-align: center;
+    background-color: var(--danger);
+    margin-top: 0;
+    padding: 10px;
 }
 
-.form-group input:valid,
-.form-group textarea:valid,
-.form-group select:valid {
-  border-color: #00C851;
-  box-shadow: 0 0 5px rgba(0, 200, 81, 0.3);
+.registration-container h2 {
+    margin: 5px 0;
 }
 
-/* Inventory Display Table */
+.registration-container h3 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.registration-container h4 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.registration-container hr {
+    margin: 25px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .login-container,
+    .registration-container,
+    .management-container,
+    .add-class-container,
+    .edit-class-container,
+    .review-container {
+        padding: 15px;
+    }
+}
+@media (min-width: 1024px) {
+    .login-container,
+    .registration-container,
+    .management-container,
+    .add-class-container,
+    .edit-class-container,
+    .review-container {
+        max-width: 700px;
+    }
+}
+
+.management-container h2 {
+    margin: 0;
+}
+
+.management-container .input {
+    width: 100%;
+}
+.login-container p,
+.registration-container p,
+.management-container p,
+.add-class-container p {
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.login-container ul,
+.registration-container ul,
+.management-container ul {
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.management-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-container fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input label {
+    display: block;
+    font-weight: bold;
+    color: white;
+    font-size: 0.85em;
+}
+
+.input input,
+.input textarea,
+.input select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.input input:focus,
+.input textarea:focus,
+.input select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+form input:required,
+form textarea:required,
+form select:required {
+    border-left: 8px solid var(--danger);
+}
+
+form input:required:valid,
+form textarea:required:valid,
+form select:required:valid {
+    border-left: 8px solid var(--success);
+    background-color: var(--success-mute);
+}
+form input:required:focus,
+form textarea:required:focus,
+form select:required:focus {
+    outline: none;
+    border: 2px solid var(--accent-color);
+    border-left: 8px solid var(--accent-color);
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+.submit-button button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.submit-button button.delete {
+    background-color: var(--danger);
+}
+.submit-button button.delete:hover {
+    background-color: var(--danger-dark);
+}
+
+.submit-button button:hover {
+    background-color: var(--secondary-color);
+}
+
+a.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+a.submit-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.submit-button button:disabled {
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    cursor: not-allowed;
+}
+
+.btn {
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-mod {
+    width: 100%;
+    padding: 4px 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: .8em;
+}
+
+.btn-del {
+    width: 100%;
+    padding: 4px 8px;
+    background-color: var(--danger-dark);
+    color: #fff;
+    font-size: .8em;
+}
+.btn-mod-auto {
+    width: auto;
+    padding: 4px 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: .8em;
+}
+
+.btn-del-auto {
+    width: auto;
+    padding: 4px 8px;
+    background-color: var(--danger-dark);
+    color: #fff;
+    font-size: .8em;
+}
+
+.btn-view-auto {
+    width: auto;
+    padding: 4px 8px;
+    background-color: var(--success);
+    color: #fff;
+    font-size: .8em;
+}
+
+.form-container h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+
+.form-container h3 a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-container h3 a:hover {
+    text-decoration: underline;
+}
+.required {
+    color: var(--danger);
+}
+
 #inventoryDisplay {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+    width: 100%;
+    background-color: var(--light-grey);
+    color: var(--secondary-color);
 }
-
 #inventoryDisplay th,
 #inventoryDisplay td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+    margin: 5px;
+    padding: 5px;
+    text-align: left;
 }
 
-#inventoryDisplay th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+#passWordBtn {
+    /* border: 2px solid var(--medium-grey); */
+    background-color: var(--medium-grey);
+    color: var(--dark-grey);
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 1em;
+    font-size: small;
+    width: 7em;
+    text-align: center;
+    cursor: pointer;
+}
+#passWordBtn:hover {
+    background-color: var(--dark-grey);
+    color: #fff;
+}
+#messages ul {
+    margin: 0;
 }
 
-#inventoryDisplay a {
-  color: #000;
-  text-decoration: none;
+#messages .success {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--success-mute);
+}
+#messages .notice {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--danger-mute);
+}
+.notice {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--danger-mute);
 }
 
-#inventoryDisplay a:hover {
-  text-decoration: underline;
+.customer-reviews {
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px var(--medium-grey);
+    margin-top: 50px;
+    gap: 10px;
 }
 
-/* ===== Account Management View Styles ===== */
-.management-container h2 {
-  font-size: 1.8rem;
-  color: #000;
-  text-align: center;
-  margin-bottom: 1rem;
+.customer-reviews h2 {
+    margin: 0;
 }
 
-.management-container h3 {
-  font-size: 1.4rem;
-  color: #333;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #00c3ff;
-  padding-bottom: 0.3rem;
+.review-container h3 {
+    margin: 1px 0;
+}
+.zero-review {
+    background-color: var(--success-mute);
+    color: var(--secondary-color);
+    margin: 0;
+    padding: 10px;
+}
+.review-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 40px;
 }
 
-.management-container p {
-  font-size: 1.1rem;
-  color: #333;
-  text-align: center;
+.review-list li::marker {
+    content: '⭐';
+    font-size: 1.2em;
 }
 
-.management-container p a {
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.my-review-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+}
+.my-review-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+.review-display p,
+.my-review-display p {
+    margin: 0;
+}
+.review-display p:first-of-type {
+    color: var(--medium-grey);
 }
 
-.management-container p a:hover {
-  background-color: #00c3ff;
-  color: #fff;
+.review-display hr {
+    margin: 1px 0;
+    border-width: 2px;
 }
 
-/* ===== Account Update View Styles ===== */
-.update-container {
-  max-width: 600px; /* Wider than .form-container to accommodate two forms */
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #00c3ff; /* Matches other form containers */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+@media (max-width: 1024px) {
+    .my-review-display {
+        font-size: 0.8em;
+    }
 }
-
-.update-container h2 {
-  font-size: 1.5rem;
-  color: #000;
-  text-align: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #000;
-  padding-bottom: 0.3rem;
-}
-
-/* Style the forms within update-container */
-#accountUpdateForm,
-#changePasswordForm {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Ensure form elements inherit .form-group styles */
-.update-container .form-group label {
-  color: #333; /* Darker text for readability on white background */
-}
-
-.update-container .form-group input {
-  border: 1px solid #000;
-  background-color: #f8f8f8;
-}
-
-.update-container .form-group small {
-  color: #333;
-  font-size: 0.85rem;
-}
-
-/* Button styling (override form button to match container background) */
-.update-container form button {
-  background-color: #00c3ff;
-  border: 1px solid #000;
-  color: #000;
-}
-
-.update-container form button:hover {
-  background-color: #0099cc;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  .update-container {
-    margin: 1rem;
-    padding: 1rem;
-    max-width: 100%;
-  }
-}
-
-/* Favorites Section in Management View */
-.management-container #inv-display {
-  margin-top: 1rem;
-}
-
-/* Favorite Toggle Button in Detail View */
-.vehicle-info form button {
-  padding: 0.75rem 1.5rem;
-  background-color: #00c3ff;
-  color: #000;
-  border: 1px solid #000;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1rem;
-}
-
-.vehicle-info form button:hover {
-  background-color: #0099cc;
-}
-
-/* Hamburger Menu Styles */
-.hamburger {
-  display: none; /* Hidden by default on desktop */
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: white;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.nav-menu {
-  display: block; /* Visible by default on desktop */
-}
-
-/* Navigation Styles (ensure existing styles are compatible) */
-nav {
-  background-color: #24253c;
-}
-
-nav.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  gap: 0.5rem;
-  max-width: 1200px;
-  padding: 0.5rem 1rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem;
-  transition: opacity 0.3s;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Mobile Styles (below 768px) */
-@media (max-width: 767px) {
-  .hamburger {
-    display: block; /* Show hamburger button on mobile */
-  }
-
-  .nav-menu {
-    display: none; /* Hide menu by default on mobile */
-  }
-
-  .nav-menu.active {
-    display: block; /* Show menu when active */
-  }
-
-  nav ul {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 1rem; /* Increase gap for better spacing */
-    padding: 0.5rem;
-  }
-
-  nav li {
-    width: 100%; /* Make each item take full width */
-    text-align: center; /* Center the text */
-  }
-
-  nav a {
-    display: block; /* Ensure the link takes the full width of the li */
-    padding: 0.75rem; /* Increase padding for touch targets */
-    font-size: 1.1rem; /* Slightly larger font for readability */
-  }
-}
+/* @media (min-width: 1024px) {
+    .my-review-display {
+        font-size: .8em;
+    }
+} */
