@@ -297,8 +297,16 @@ invCont.updateInventory = async function (req, res, next) {
         classification_id
       });
     }
-  } catch (error) {
-    console.error("[CRITICAL] Error in updateInventory:", error.stack);
-    res.status(500).render("error", {
-      title: "Server Error",
-      message: "Failed to update inventory item: " + error.message,
+    } catch (error) {
+  console.error("[CRITICAL] Error in deleteInventory:", error.stack);
+  res.status(500).render("error", {
+    title: "Server Error",
+    message: "Failed to delete inventory item: " + error.message,
+    nav: await utilities.getNav()
+  });
+}
+};
+
+
+
+module.exports = invCont; // Export the controller functions for use in routes/inventoryRoute.js
