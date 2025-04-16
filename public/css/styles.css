@@ -806,38 +806,3 @@ a.submit-button:hover {
         font-size: .8em;
     }
 } */
-.product-details {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-.product-images img {
-    max-width: 500px; /* Adjust as needed */
-    height: auto;
-}
-
-.product-info {
-    max-width: 400px; /* Adjust as needed */
-}
-
-.price {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.purchase-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.contact-link {
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-}
