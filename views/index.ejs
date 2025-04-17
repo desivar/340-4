@@ -1,5 +1,34 @@
 <!--<h1>Desire Vargas</h1-->
 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>|CSE 340 App</title>
+    <meta name="author" content="Desire Vargas" />
+    <link rel="icon" type="image/png" href="/public/images/site/icon.png" />
+
+    <link rel="stylesheet" href="/css/styles.css" media="screen" />
+    <link rel="stylesheet" href="/css/inventory-styles.css" media="screen" />
+</head>
+<body>
+    <header id="top-header">
+        <span class="siteName">
+            <a href="/" title="Return to home page">CSE Motors</a>
+        </span>
+        <div id="tools">
+            <% if (locals.loggedin) { %>
+                <a href="/account/" title="Welcome">Welcome <%= locals.accountData.account_firstname %></a>
+                <a href="/account/logout" title="Click to log out">Logout</a>
+            <% } else { %>
+                <a href="/account/login" title="Click to log in">My Account</a>
+            <% } %>
+        </div>
+    </header>
+    <nav><%- nav %></nav>
+
     <div class="page-container">
         <section class="hero-container">
             <h1>Welcome to CSE Motors!</h1>
@@ -7,7 +36,6 @@
             <picture>
                 <img src="/images/vehicles/delorean.jpg" alt="delorean" width="500" />
             </picture>
-    
             <article>
                 <h2>DMC Delorean</h2>
                 <ul>
@@ -22,17 +50,26 @@
                 </a>
             </article>
         </section>
-        <div class="info-container">
-            <section class="reviews">
-                <h2>DMC Delorean Reviews</h2>
-                <ul>
-                    <li>"So fast its almost like traveling in time." (4/5)</li>
-                    <li>"Coolest ride on the road." (4/5)</li>
-                    <li>"I'm feeling McFly!" (5/5)</li>
-                    <li>"The most futuristic ride of our day." (4.5/5)</li>
-                    <li>"80's livin and I love it!" (5/5)</li>
+
+        <section class="featured-vehicles">
+            <h2>Featured Vehicles</h2>
+            <% if (featuredVehicles && featuredVehicles.length > 0) { %>
+                <ul class="featured-grid">
+                    <% featuredVehicles.forEach(vehicle => { %>
+                        <li class="featured-item">
+                            <img src="<%= vehicle.inv_image || '/images/no-image.png' %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
+                            <h3><%= vehicle.inv_make %> <%= vehicle.inv_model %></h3>
+                            <a href="/inv/detail/<%= vehicle.inv_id %>">View Details</a>
+                        </li>
+                    <% }); %>
                 </ul>
-            </section>
+                <a href="/vehicles" class="button">View All Vehicles</a>
+            <% } else { %>
+                <p>No featured vehicles at the moment.</p>
+            <% } %>
+        </section>
+
+        <div class="info-container">
             <section class="upgrades">
                 <h2>Delorean Upgrades</h2>
                 <div class="upgrades-item">
@@ -60,5 +97,22 @@
                     <a href="/upgrades" class="">Hub Caps</a>
                 </div>
             </section>
+            <section class="reviews">
+                <h2>DMC Delorean Reviews</h2>
+                <ul>
+                    <li>"So fast its almost like traveling in time." (4/5)</li>
+                    <li>"Coolest ride on the road." (4/5)</li>
+                    <li>"I'm feeling McFly!" (5/5)</li>
+                    <li>"The most futuristic ride of our day." (4.5/5)</li>
+                    <li>"80's livin and I love it!" (5/5)</li>
+                </ul>
+            </section>
         </div>
     </div>
+
+    <footer>
+        <p class="copyright">&copy; <%= year %>, CSE 340 App</p>
+        <a href="/error">Error Link</a>
+    </footer>
+</body>
+</html>
