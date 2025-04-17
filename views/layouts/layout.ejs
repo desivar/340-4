@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>
-<body>
-    <div id="wrapper">
-        <%- include('../partials/header') %>
-        <%- include('../partials/navigation') %>
+    <%- include('../partials/head') %>
 
-        <main>
-            <%- body %>
-        </main>
+    <body>
+        <div id="wrapper"> 
+            <%- include('../partials/header') %>
+            <%- include('../partials/navigation') %>
 
-        <%- include('../partials/footer') %>
-    </div>
-</body>
+            <main>
+                <%- body %> <!-- This is where the content will be injected -->
+            </main>
+
+            <%- include('../partials/footer') %>
+        </div>  <!-- End of wrapper -->
+
+        <!-- Add the client-side scripts -->
+        <script src="/js/nav.js"></script>
+        <script src="/js/favorites.js"></script>
+    </body>
+</html>
