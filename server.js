@@ -1,5 +1,5 @@
 /* ******************************************
- * This server.js file is the primary file of the
+ * This server.js file is the primary file of the 
  * application. It is used to control the project.
  *******************************************/
 /* ***********************
@@ -18,7 +18,7 @@ const pool = require('./database/');
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser"); // Add cookie-parser
-const path = require('path'); // Import the path module
+
 
 
 /* ***********************
@@ -50,8 +50,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(cookieParser());
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public'))); // Moved to the correct location
-app.use(utilities.checkJWTToken);
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates
@@ -96,9 +95,9 @@ app.get("/error", (req, res, next) => {
 
 // 404 catch-all comes AFTER all routes
 app.use((req, res) => {
-  res.status(404).render("error", {
-    title: "404",
-    message: "Sorry, we appear to have lost that page."
+  res.status(404).render("error", { 
+      title: "404", 
+      message: "Sorry, we appear to have lost that page." 
   });
 });
 
@@ -110,13 +109,14 @@ app.use(async (err, req, res, next) => {
   console.error(err.stack);
   //const utilities = require("./utilities");
   const nav = await utilities.getNav(); // Include nav if desired
-  res.status(500).render("error", {
-    title: "Server Error",
-    message: "Oh no! There was a crash. Maybe try a different route?",
-    nav
+  res.status(500).render("error", { 
+      title: "Server Error", 
+      message: "Oh no! There was a crash. Maybe try a different route?", 
+      nav 
   });
 });
 
+// Initialize database tables
 async function initializeDatabase() {
   try {
     await pool.query(`
@@ -170,3 +170,4 @@ async function initializeDatabase() {
 }
 
 initializeDatabase();
+
