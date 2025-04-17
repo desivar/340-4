@@ -9,7 +9,7 @@ Util.handleErrors = fn => (req, res, next) => {
 };
 
 /* ****************************************
-* Get Navigation Links
+*  Get Navigation Links
 * ************************************ */
 Util.getNav = async function (req, res, next) {
   try {
@@ -29,7 +29,6 @@ Util.getNav = async function (req, res, next) {
       list += "</li>";
     });
     list += "</ul>";
-    console.log("Value of 'list' in getNav:", list); // THIS IS THE LINE YOU ADDED
     return list;
   } catch (error) {
     console.error("Error in getNav:", error);
@@ -44,35 +43,35 @@ Util.buildClassificationGrid = async function(data, req, res, next){
     let grid
     if(data.length > 0){
       grid = '<ul id="inv-display">'
-      data.forEach(vehicle => {
+      data.forEach(vehicle => { 
         grid += '<li>'
-        grid +=   '<a href="../../inv/detail/'+ vehicle.inv_id
-        + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
-        + 'details"><img src="' + vehicle.inv_image
-        +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model
+        grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
+        + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
+        + 'details"><img src="' + vehicle.inv_image 
+        +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
         +' on CSE Motors" /></a>'
         grid += '<div class="namePrice">'
         grid += '<hr />'
         grid += '<h2>'
-        grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View '
-        + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
+        grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
+        + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
         + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
         grid += '</h2>'
-        grid += '<span>$'
+        grid += '<span>$' 
         + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
         grid += '</div>'
         grid += '</li>'
       })
       grid += '</ul>'
-    } else {
+    } else { 
       grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
     }
     return grid
   }
 
 /* **************************************
-* Build the vehicle detail view HTML
-* ************************************ */
+ * Build the vehicle detail view HTML
+ * ************************************ */
 Util.buildDetailView = async function(vehicle, req, res, next) {
   let detail = "";
 
@@ -117,8 +116,8 @@ Util.buildDetailView = async function(vehicle, req, res, next) {
 };
 
 /* ***************************
-* Build Classification List
-* *************************** */
+ *  Build Classification List
+ * *************************** */
 Util.buildClassificationList = async function (classification_id = null) {
   try {
     let data = await invModel.getClassifications();
@@ -149,26 +148,26 @@ Util.buildClassificationList = async function (classification_id = null) {
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
   if (req.cookies.jwt) {
-    jwt.verify(
-      req.cookies.jwt,
-      process.env.ACCESS_TOKEN_SECRET,
-      function (err, accountData) {
-       if (err) {
-        req.flash("Please log in")
-        res.clearCookie("jwt")
-        return res.redirect("/account/login")
-       }
-       res.locals.accountData = accountData
-       res.locals.loggedin = 1
-       next()
-      })
+   jwt.verify(
+    req.cookies.jwt,
+    process.env.ACCESS_TOKEN_SECRET,
+    function (err, accountData) {
+     if (err) {
+      req.flash("Please log in")
+      res.clearCookie("jwt")
+      return res.redirect("/account/login")
+     }
+     res.locals.accountData = accountData
+     res.locals.loggedin = 1
+     next()
+    })
   } else {
-    next()
+   next()
   }
 }
 
 /* ****************************************
-* Check Login
+*  Check Login
 * ************************************ */
 Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
@@ -196,4 +195,4 @@ Util.checkAccountType = (req, res, next) => {
   }
 }
 
-module.exports = Util;
+module.exports = Util; // Export the functions for use in routes/inventoryRoute.js
