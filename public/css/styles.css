@@ -300,6 +300,96 @@ main {
     height: auto;
     cursor: pointer;
 }
+/******* Hero Container Content ***************/
+/* ... your hero container styles ... */
+
+/******** Featured Vehicles Section *********/
+.featured-vehicles {
+    padding: 20px;
+    background-color: var(--background);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--light-grey);
+}
+
+.featured-vehicles h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--medium-grey);
+    padding-bottom: 5px;
+}
+
+.featured-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.featured-item {
+    background-color: white;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.featured-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.featured-item h3 {
+    font-size: 1.1em;
+    margin: 10px;
+    color: var(--tertiary-color);
+}
+
+.featured-item a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--light-grey);
+    color: var(--secondary-color);
+    transition: background-color 0.3s ease;
+}
+
+.featured-item a:hover {
+    background-color: var(--medium-grey);
+}
+
+.featured-vehicles .button {
+    display: block;
+    margin: 20px auto 0;
+    text-align: center;
+    width: fit-content;
+    padding: 10px 20px; /* Ensure button has padding */
+    background-color: var(--primary-color); /* Use your primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.featured-vehicles .button:hover {
+    background-color: var(--secondary-color); /* Use your secondary color on hover */
+}
+
+.featured-vehicles .empty-message {
+    color: var(--medium-grey);
+    font-style: italic;
+}
+
+
 
 /******* Info Container Content ***************/
 /* Grid Areas */
