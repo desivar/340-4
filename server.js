@@ -1,11 +1,6 @@
-/* ******************************************
- * This server.js file is the primary file of the 
- * application. It is used to control the project.
- *******************************************/
-/* ***********************
- * Require Statements
- *************************/
-const utilities = require("./utilities");
+
+
+ const utilities = require("./utilities");
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
@@ -19,8 +14,6 @@ const pool = require('./database/');
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser"); // Add cookie-parser
-
-
 
 /* ***********************
  * Middleware
@@ -50,8 +43,14 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // Add cookie-parser middleware
 app.use(cookieParser());
 
-// Set static folder
-app.use(utilities.checkJWTToken)
+// *** SERVE STATIC FILES BEFORE JWT CHECK ***
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Set static folder (This line might be redundant now, you can try commenting it out later if it works)
+// app.use(utilities.checkJWTToken)
+
+// *** APPLY JWT CHECK AFTER STATIC FILES ***
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * View Engine and Templates
@@ -171,6 +170,3 @@ async function initializeDatabase() {
 }
 
 initializeDatabase();
-
-// ADD THIS LINE TO SERVE STATIC FILES
-app.use(express.static(path.join(__dirname, 'public')));
