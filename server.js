@@ -1,6 +1,6 @@
 
 
- const utilities = require("./utilities");
+const utilities = require("./utilities");
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
@@ -43,14 +43,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // Add cookie-parser middleware
 app.use(cookieParser());
 
-// *** SERVE STATIC FILES BEFORE JWT CHECK ***
+// Serve static files BEFORE any authentication checks
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Set static folder (This line might be redundant now, you can try commenting it out later if it works)
-// app.use(utilities.checkJWTToken)
-
-// *** APPLY JWT CHECK AFTER STATIC FILES ***
-app.use(utilities.checkJWTToken);
 
 /* ***********************
  * View Engine and Templates
@@ -62,36 +56,21 @@ app.set("layout", "./layouts/layout"); // not at views root
 /* ***********************
  * Routes
  *************************/
-// app.use(static); // REMOVE THIS LINE
-app.use("/account", accountRoute);
+// Apply checkJWTToken middleware to routes that require authentication
+app.use("/account", utilities.checkJWTToken, accountRoute);
+app.use("/inv", utilities.checkJWTToken, inventoryRoute); // Assuming inventory routes are protected
 
-/* ***********************
- * Local Server Information
- * Values from .env (environment) file
- *************************/
-const port = process.env.PORT;
-const host = process.env.HOST;
-
-/* ***********************
- * Log statement to confirm server operation
- *************************/
-app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`);
-});
-
-/* ***********************
- * Index Route
- *************************/
+// Publicly accessible routes
 app.get("/", baseController.buildHome);
 
-// Inventory routes
-app.use("/inv", inventoryRoute);
-
-// Intentional error route
+// Intentional error route (can remain public)
 app.get("/error", (req, res, next) => {
   // Create and pass an error to trigger the error middleware
   next(new Error("Intentional error triggered for testing purposes."));
 });
+
+const intentionalErrorRoute = require("./routes/intentionalErrorRoute");
+app.use("/intentional-error", intentionalErrorRoute);
 
 // 404 catch-all comes AFTER all routes
 app.use((req, res) => {
@@ -101,13 +80,9 @@ app.use((req, res) => {
   });
 });
 
-const intentionalErrorRoute = require("./routes/intentionalErrorRoute");
-app.use("/intentional-error", intentionalErrorRoute);
-
 // Error handling middleware for 500 errors
 app.use(async (err, req, res, next) => {
   console.error(err.stack);
-  //const utilities = require("./utilities");
   const nav = await utilities.getNav(); // Include nav if desired
   res.status(500).render("error", {
     title: "Server Error",
@@ -170,3 +145,17 @@ async function initializeDatabase() {
 }
 
 initializeDatabase();
+
+/* ***********************
+ * Local Server Information
+ * Values from .env (environment) file
+ *************************/
+const port = process.env.PORT;
+const host = process.env.HOST;
+
+/* ***********************
+ * Log statement to confirm server operation
+ *************************/
+app.listen(port, () => {
+  console.log(`app listening on ${host}:${port}`);
+});
