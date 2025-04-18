@@ -10,7 +10,8 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const app = express();
-const static = require("./routes/static");
+const path = require("path"); // ADD THIS LINE
+// const static = require("./routes/static"); // REMOVE THIS LINE
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute.js");
 const session = require("express-session");
@@ -62,7 +63,7 @@ app.set("layout", "./layouts/layout"); // not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(static);
+// app.use(static); // REMOVE THIS LINE
 app.use("/account", accountRoute);
 
 /* ***********************
@@ -95,9 +96,9 @@ app.get("/error", (req, res, next) => {
 
 // 404 catch-all comes AFTER all routes
 app.use((req, res) => {
-  res.status(404).render("error", { 
-      title: "404", 
-      message: "Sorry, we appear to have lost that page." 
+  res.status(404).render("error", {
+    title: "404",
+    message: "Sorry, we appear to have lost that page."
   });
 });
 
@@ -109,10 +110,10 @@ app.use(async (err, req, res, next) => {
   console.error(err.stack);
   //const utilities = require("./utilities");
   const nav = await utilities.getNav(); // Include nav if desired
-  res.status(500).render("error", { 
-      title: "Server Error", 
-      message: "Oh no! There was a crash. Maybe try a different route?", 
-      nav 
+  res.status(500).render("error", {
+    title: "Server Error",
+    message: "Oh no! There was a crash. Maybe try a different route?",
+    nav
   });
 });
 
@@ -170,3 +171,6 @@ async function initializeDatabase() {
 }
 
 initializeDatabase();
+
+// ADD THIS LINE TO SERVE STATIC FILES
+app.use(express.static(path.join(__dirname, 'public')));
