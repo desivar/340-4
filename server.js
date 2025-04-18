@@ -170,4 +170,3 @@ async function initializeDatabase() {
 }
 
 initializeDatabase();
-
