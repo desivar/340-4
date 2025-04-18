@@ -14,6 +14,7 @@ const pool = require('./database/');
 const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser"); // Add cookie-parser
+console.log(__dirname);
 
 /* ***********************
  * Middleware
